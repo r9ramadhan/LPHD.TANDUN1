@@ -354,14 +354,23 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'Pohon Adopsi<br /><table><tr><td style="text-align: center;"><img src="legend/PohonAdopsi_3_05cm0.png" /></td><td>0 - 5 cm</td></tr><tr><td style="text-align: center;"><img src="legend/PohonAdopsi_3_561cm1.png" /></td><td>5 - 6,1 cm</td></tr><tr><td style="text-align: center;"><img src="legend/PohonAdopsi_3_6115cm2.png" /></td><td>6,1 - 15 cm</td></tr></table>': cluster_PohonAdopsi_3,'<img src="legend/UsulanHutanDesaTandun_2.png" /> Usulan Hutan Desa Tandun': layer_UsulanHutanDesaTandun_2,"Google Satellite": layer_GoogleSatellite_1,"OSM Standard": layer_OSMStandard_0,}).addTo(map);
+        L.control.layers(baseMaps,{'Pohon Adopsi<br />Kelas Diameter Pohon<br /><table><tr><td style="text-align: center;"><img src="legend/PohonAdopsi_3_05cm0.png" /></td><td>0 - 5 cm</td></tr><tr><td style="text-align: center;"><img src="legend/PohonAdopsi_3_561cm1.png" /></td><td>5 - 6,1 cm</td></tr><tr><td style="text-align: center;"><img src="legend/PohonAdopsi_3_6115cm2.png" /></td><td>6,1 - 15 cm</td></tr></table>': cluster_PohonAdopsi_3,'<img src="legend/UsulanHutanDesaTandun_2.png" /> Usulan Hutan Desa Tandun': layer_UsulanHutanDesaTandun_2,"Google Satellite": layer_GoogleSatellite_1,"OSM Standard": layer_OSMStandard_0,}).addTo(map);
         setBounds();
         map.addControl(new L.Control.Search({
             layer: cluster_PohonAdopsi_3,
             initial: false,
             hideMarkerOnCollapse: true,
+            textPlaceholder:'Cari Berdasarkan Kode Pohon',
             propertyName: 'kode_pohon'}));
         document.getElementsByClassName('search-button')[0].className +=
+         ' fa fa-binoculars';
+         map.addControl(new L.Control.Search({
+            layer: cluster_PohonAdopsi_3,
+            initial: false,
+            hideMarkerOnCollapse: true,
+            textPlaceholder:'Cari Berdasarkan Nama Lokal',
+            propertyName: 'nama_lokal'}));
+        document.getElementsByClassName('search-button')[1].className +=
          ' fa fa-binoculars';
          L.Control.Watermark=L.Control.extend({
             onAdd:function(map){
